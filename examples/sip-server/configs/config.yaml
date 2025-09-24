@@ -1,0 +1,43 @@
+server:
+  sip_port: 5060
+  rtp_port_range:
+    min: 10000
+    max: 40000
+  bind_address: "0.0.0.0"
+
+security:
+  ip_whitelist:
+    - "127.0.0.1"
+    - "192.168.1.0/24"
+    - "10.0.0.0/8"
+
+dids:
+  # Valid DIDs that can receive calls
+  valid_dids:
+    - "1001"
+    - "1002" 
+    - "1003"
+    - "support"
+    - "sales"
+
+media:
+  supported_codecs:
+    - "PCMU"
+    - "PCMA" 
+    - "Opus"
+    - "L16"
+  media_files_path: "./media-files"
+  greeting_file: "greeting.wav"
+  
+ffmpeg:
+  path: "/usr/bin/ffmpeg"
+  enabled: true
+
+logging:
+  level: "info"
+  format: "json"
+  file: "sip-server.log"
+
+concurrency:
+  max_concurrent_calls: 100
+  call_timeout_seconds: 300
